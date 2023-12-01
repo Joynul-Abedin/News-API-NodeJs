@@ -3,12 +3,13 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 const app = express();
+let id = 0;
 
 // Function to fetch news from a given URL and category
 const fetchNews = async (categoryPath, category) => {
     const baseUrl = 'https://edition.cnn.com';
     let articles = [];
-    let id = 0;
+    
 
     try {
         const fullUrl = baseUrl + categoryPath;
@@ -29,14 +30,16 @@ const fetchNews = async (categoryPath, category) => {
                 const title = headlineTag.text();
                 const imageLink = imageTag.attr('src');
                 const source = "CNN";
+                news_id = id+1,
                 articles.push({
-                    id: ++id,
+                    id: news_id,
                     title: title,
                     link: link,
                     image: imageLink,
                     source: source,
                     category: category
                 });
+                id = news_id
             }
         });
     } catch (error) {
