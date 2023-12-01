@@ -120,10 +120,10 @@ const fetchNews = async (categoryPath, category) => {
 
                 articles.push({
                     id: id,
-                    title: title,
-                    link: link,
-                    image: imageLink,
-                    source: source,
+                    title: title ?? "",
+                    link: link ?? "",
+                    image: imageLink ?? "",
+                    source: source ?? "",
                     category: category
                 });
             }
