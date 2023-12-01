@@ -33,10 +33,10 @@ const fetchNews = async (categoryPath, category) => {
                 news_id = id+1,
                 articles.push({
                     id: news_id,
-                    title: title,
-                    link: link,
-                    image: imageLink,
-                    source: source,
+                    title: title ?? '',
+                    link: link ?? '',
+                    image: imageLink ?? '',
+                    source: source?? '',
                     category: category
                 });
                 id = news_id
