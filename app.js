@@ -281,6 +281,10 @@ app.get('/', async (req, res) => {
     try {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
+
+        // Delete news that are not from today
+        await NewsArticle.deleteMany({ dateFetched: { $lt: today } });
+
         let existingNews = await NewsArticle.find({ dateFetched: { $gte: today } });
 
         if (existingNews.length > 0) {
