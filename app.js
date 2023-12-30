@@ -318,6 +318,11 @@ app.get('/', async (req, res) => {
     }
 });
 
+// Endpoint to get the health of the server
+app.get('/ping', async (req, res) => {
+    res.send('Server is running');
+});
+
 
 // Start the server
 const PORT = process.env.PORT || 3000;
